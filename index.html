@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-site-verification" content="xxxxxxxxxxxxxxxxxxxx" />
+  <title>Portfolio | Sang Ayu Made Ajeng Wulandari</title>
+  <style>
+
+    /* Home Section */
+    #home {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      overflow: hidden;
+      background: linear-gradient(270deg, #0f0c29, #302b63, #24243e);
+      background-size: 600% 600%;
+      animation: gradientBG 20s ease infinite;
+    }
+
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    /* Teks berjalan */
+    .marquee {
+      width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+      box-sizing: border-box;
+      margin-top: 20px;
+    }
+
+    .marquee span {
+      display: inline-block;
+      padding-left: 100%;
+      animation: marquee 15s linear infinite;
+      font-size: 1.2em;
+      color: #d1b3ff;
+    }
+
+    @keyframes marquee {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-100%); }
+    }
+
+    /* Typing effect */
+    .typing-text {
+      border-right: 2px solid #9f7aea;
+      white-space: nowrap;
+      overflow: hidden;
+      display: inline-block;
+      width: 0;
+      animation: typing 4s steps(30, end) infinite alternate, blink 0.8s infinite;
+      font-size: 1.4em;
+      color: #d1b3ff;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    /* Animated circles */
+    .circle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(159, 122, 234, 0.3);
+      animation: float 8s ease-in-out infinite;
+    }
+
+    .c1 { width: 120px; height: 120px; top: 15%; left: 10%; }
+    .c2 { width: 80px; height: 80px; bottom: 20%; right: 15%; animation-delay: 2s; }
+    .c3 { width: 60px; height: 60px; top: 30%; right: 25%; animation-delay: 4s; }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-30px); }
+      100% { transform: translateY(0px); }
+    }
+
+    /* Glow button */
+    .glow-btn {
+      position: relative;
+      box-shadow: 0 0 15px #9f7aea;
+      transition: 0.3s;
+    }
+
+    .glow-btn:hover {
+      box-shadow: 0 0 25px #d1b3ff, 0 0 50px #9f7aea;
+      transform: scale(1.05);
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      color: white;
+    }
+
+    header {
+     position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0,0,0,0.7);
+      display: flex;
+      justify-content: center; /* Semua isi header rata tengah */
+      align-items: center;
+      gap: 600px; /* jarak antara judul dan menu */
+      padding: 15px 30px;
+      z-index: 100;
+    }
+     nav {
+      display: flex;
+      gap: 20px; /* jarak antar link */
+    }
+
+
+
+    header h1 {
+      margin: 0;
+      font-size: 20px;
+      color: #9f7aea;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #3d2d5e;
+    }
+
+    section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      border: none;
+      margin: 10px;
+      cursor: pointer;
+      border-radius: 8px;
+      background: #9f7aea;
+      color: white;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #6b46c1;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.1);
+      margin: 10px;
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 300px;
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .portfolio-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      width: 300px;
+    }
+
+    input, textarea {
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 6px;
+      border: none;
+    }
+    section {
+    opacity: 0;
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  /* Variasi arah */
+  .fade-up    { transform: translateY(50px); }
+  .fade-down  { transform: translateY(-50px); }
+  .fade-left  { transform: translateX(-50px); }
+  .fade-right { transform: translateX(50px); }
+
+  /* Saat terlihat */
+  .visible {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+  }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Ajeng Wulandari</h1>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#certification">Certification</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section id="home"class="fade-up">
+  <div class="welcome-container">
+    <div style="display:flex; flex-direction:column; align-items:center;">
+      <img src="c:\Users\darmayasa\Downloads\Ajeng Wulandari\foto ajeng (2).jpg " alt="Foto Profil Sang Ayu Made Ajeng Wulandari" 
+           style="width:200px; height:200px; border-radius:100%; object-fit:cover; margin-bottom:20px; border:4px solid #9f7aea;">
+      <h2>Hi, I'm <span style="color:#9f7aea">Sang Ayu Made Ajeng Wulandari</span></h2>
+      <h3><span class="typing-text"></span></h3>
+      <p style="max-width:600px; margin-top:10px;">
+        Mahasiswa Sistem Informasi yang antusias mengembangkan pengalaman digital inovatif
+        dan siap berkontribusi nyata bagi masyarakat.
+      </p>
+      <a href="#about" class="btn glow-btn">Explore My Journey</a>
+    </div>
+
+    <!-- Teks berjalan -->
+    <div class="marquee"><span>🌟 Selamat datang di portofolio saya | Mahasiswa Sistem Informasi | Suka berbisnis dan teknologi | Mari berkolaborasi! 🌟</span></div>
+
+    <div class="circle c1"></div>
+    <div class="circle c2"></div>
+    <div class="circle c3"></div>
+</section>
+
+<section id="about"class="fade-left">
+  <h2>About Me</h2>
+  <div style="display:flex; flex-direction:column; align-items:center;">
+    <img src="c:\Users\darmayasa\Downloads\Ajeng Wulandari\Foto ajeng.jpg" alt="Foto Profil Sang Ayu Made Ajeng Wulandari" 
+         style="width:200px; height:200px; border-radius:100%; object-fit:cover; margin-bottom:20px; border:4px solid #9f7aea;">
+  <p>Hello, I'm <b>Sang Ayu Made Ajeng Wulandari</b>.<br>
+     Tanggal Lahir: <b>13 Januari 2007</b><br>
+     Mahasiswa <b>Universitas Pendidikan Ganesha</b><br>
+     Fakultas: <b>Teknik dan Kejuruan</b><br>
+     Jurusan: <b>Teknik Informatika</b><br>
+     Program Studi: <b>Sistem Informasi</b><br><br>
+     <p style="max-width:600px; text-align:center; margin-top:15px; color:#ffffff;">
+        Saya memulai perjalanan akademik sebagai mahasiswa Teknik Informatika Universitas
+      Pendidikan Ganesha dengan rasa ingin tahu yang besar terhadap dunia teknologi.
+      Sejak semester awal, saya tertarik tidak hanya pada bagaimana sistem informasi
+      dibangun, tetapi juga bagaimana teknologi dapat menjadi solusi nyata bagi banyak orang.
+      Di sisi lain, saya memiliki ketertarikan kuat pada dunia bisnis. 
+      Bagi saya, teknologi dan bisnis adalah dua hal yang saling melengkapi. 
+      Dari pengalaman kecil seperti membuka usaha sederhana, saya belajar bagaimana
+       manajemen, strategi, dan kreativitas sangat penting untuk keberhasilan.</p>
+  </p>
+  <p style="max-width:600px; text-align:center; margin-top:15px; color:#d1b3ff;">
+      <b>Visi saya:</b> <i>Menggabungkan kemampuan teknis dan jiwa kewirausahaan 
+      untuk memberikan kontribusi nyata bagi masyarakat dan bangsa.</i>
+    </p>
+  <a href="c:\Users\darmayasa\Downloads\CV Ajeng Wulandari.pdf" target="_blank" class="btn">Download CV</a>
+  <a href="http://www.linkedin.com/in/ajeng-wulandari-b42a98386" target="_blank" class="btn">LinkedIn</a>
+</section>
+<!-- Sertifikasi -->
+<section id="certification"class="fade-right">
+  <h2>Certification</h2>
+  <div class="portfolio-grid">
+    <div class="card">
+      <h3>Dicoding Academy</h3>
+      <p>Sertifikat Belajar Dasar Pemrograman java</p>
+      <a href="c:\Users\darmayasa\Downloads\Ajeng Wulandari\sertifikat pemograman java.pdf" target="_blank" class="btn">Lihat Sertifikat</a>
+    </div>
+    <div class="card">
+      <h3>Dicoding Academy</h3>
+      <p>Sertifikat Belajar Dasar Pemograman C</p>
+      <a href="c:\Users\darmayasa\Downloads\Ajeng Wulandari\Sertifikat pemograman C.pdf" target="_blank" class="btn">Lihat Sertifikat</a>
+    </div>
+    <div class="card">
+      <h3>Dicoding Academy</h3>
+      <p>Sertifikat Belajar Dasar Manajemen Proyek</p>
+      <a href="c:\Users\darmayasa\Downloads\Ajeng Wulandari\Sertifikat dasar Manajemen Proyek.pdf" target="_blank" class="btn">Lihat Sertifikat</a>
+    </div>
+  </div>
+</section>
+
+<!-- Prestasi -->
+<section id="achievement" class="fade-down">
+  <h2>Prestasi</h2>
+  <div class="portfolio-grid">
+    <!-- Prestasi 1 -->
+    <div class="card">
+      <img src="c:\Users\darmayasa\Downloads\Ajeng Wulandari\rainas.jpg" alt="Prestasi 1" 
+           style="width:100%; border-radius:8px; margin-bottom:15px;">
+      <h3>Peserta Raimuna Nasional XII 2023</h3>
+      <p>Mengikuti Seleksi yang bergengsi untuk menjadi peserta Raimuna Nasional XII 2023 </p>
+    </div>
+    <!-- Prestasi 2 -->
+    <div class="card">
+      <img src="c:\Users\darmayasa\Downloads\Ajeng Wulandari\0fd6640e-a1eb-40f3-84f0-a7c5610ec4a8.jpg" alt="Prestasi 2" 
+           style="width:100%; border-radius:8px; margin-bottom:15px;">
+      <h3>Juara 2 Lomba Jegeg bagus tingkat SMA </h3>
+      <p>Meraih Juara 2 Lomba Jegeg Bagus Tingkat SMA yang diikuti oleh SMA sekabupaten Klungkung</p>
+    </div>
+    <!-- Prestasi 3 -->
+    <div class="card">
+      <img src="c:\Users\darmayasa\Downloads\Ajeng Wulandari\d2f4423c-d1fb-4d31-9038-2916c60bfc44.jpg" alt="Prestasi 3" 
+           style="width:100%; border-radius:8px; margin-bottom:15px;">
+      <h3>Juara 3 Lomba Ngewacen Aksara Bali </h3>
+      <p>Meraih Juara 3 Lomba Ngewacen Akasara bali dalam rangka Bulan bahasa bali.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact"class="fade-up">
+  <h2>Contact Me</h2>
+
+  <!-- Info Kontak -->
+  <p><b>Email:</b> 
+    <a href="mailto:sang.ayu.ajeng@student.undiksha.ac.id">
+      sang.ayu.ajeng@student.undiksha.ac.id
+    </a>
+  </p>
+  <p><b>Instagram:</b> 
+    <a href="https://instagram.com/ajengaw.13" target="_blank">@ajengaw.13</a>
+  </p>
+
+  <!-- Form kirim ke Formspree -->
+  <form id="contactForm" action="https://formspree.io/f/mjkaywog" method="POST">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+    <button type="submit" class="btn">Send Message</button>
+  </form>
+</section>
+
+<!-- Script agar ada alert setelah submit -->
+<script>
+  document.getElementById("contactForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    const form = e.target;
+
+    fetch(form.action, {
+      method: form.method,
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(response => {
+      if (response.ok) {
+        alert("✅ Pesan berhasil dikirim! Terima kasih sudah menghubungi saya.");
+        form.reset();
+      } else {
+        alert("❌ Gagal mengirim pesan, coba lagi ya.");
+      }
+    }).catch(error => {
+      alert("⚠️ Terjadi kesalahan, coba lagi.");
+    });
+  });
+  const sections = document.querySelectorAll("section");
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+      } else {
+        // supaya bisa animasi ulang kalau discroll balik
+        entry.target.classList.remove("visible");
+      }
+    });
+  }, { threshold: 0.2 });
+
+  sections.forEach(section => observer.observe(section));
+</script>
+
+
+<script>
+  document.getElementById("contactForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    alert("Terima kasih sudah menghubungi! Saya akan segera membalas pesan Anda.");
+  });
+</script>
+
+</body>
+</html>
