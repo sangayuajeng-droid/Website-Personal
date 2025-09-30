@@ -1,0 +1,16 @@
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center; /* Semua isi header rata tengah */
+  align-items: center;
+  gap: 50px; /* jarak antara judul dan menu */
+  padding: 15px 30px;
+  z-index: 100;
+}
+nav {
+  display: flex;
+  gap: 20px; /* jarak antar link */
+}
